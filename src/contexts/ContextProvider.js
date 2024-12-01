@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 
+import { useSelector } from "react-redux";
+
 const StateContext = createContext();
 
 const initialState = {
@@ -16,6 +18,8 @@ export const ContextProvider = ({ children }) => {
   const [themeSettings, setThemeSettings] = useState(false);
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
+
+  const {data,isLoggedIn} = useSelector((state)=>state.user);
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
@@ -50,6 +54,8 @@ export const ContextProvider = ({ children }) => {
         setColor,
         themeSettings,
         setThemeSettings,
+        isAuthenticated:isLoggedIn
+
       }}
     >
       {children}
@@ -58,3 +64,5 @@ export const ContextProvider = ({ children }) => {
 };
 
 export const useStateContext = () => useContext(StateContext);
+
+

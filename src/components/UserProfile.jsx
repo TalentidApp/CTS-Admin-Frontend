@@ -6,8 +6,27 @@ import { useStateContext } from "../contexts/ContextProvider";
 import avatar from "../data/avatar.jpg";
 import { userProfileData } from "../data/dummy";
 
+import { useDispatch } from "react-redux";
+
+import { logout } from "../redux/userSlice";
+
+import { useNavigate } from "react-router-dom";
+
 const UserProfile = () => {
   const { currentColor } = useStateContext();
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  async function clickHandler(){
+
+
+    dispatch(logout());
+
+    navigate("/login");
+
+  }
 
   return (
     <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -66,7 +85,7 @@ const UserProfile = () => {
           </div>
         ))}
       </div>
-      <div className="mt-5">
+      <div className="mt-5" onClick={clickHandler}>
         <Button
           color="white"
           bgColor={currentColor}

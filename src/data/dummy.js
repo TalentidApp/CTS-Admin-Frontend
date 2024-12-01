@@ -22,6 +22,8 @@ import {
   FiShoppingCart,
   FiStar,
 } from "react-icons/fi";
+
+
 import { GiLouvrePyramid } from "react-icons/gi";
 import { GrLocation } from "react-icons/gr";
 import { IoMdContacts } from "react-icons/io";
@@ -91,6 +93,8 @@ const gridEmployeeCountry = (props) => (
     <span>{props.Country}</span>
   </div>
 );
+
+
 export const EditorData = () => (
   <div>
     <h3>
@@ -137,6 +141,8 @@ export const EditorData = () => (
     </h3>
   </div>
 );
+
+
 const customerGridImage = (props) => (
   <div className="image flex gap-4">
     <img
@@ -160,6 +166,8 @@ const customerGridStatus = (props) => (
     <p>{props.Status}</p>
   </div>
 );
+
+
 export const areaPrimaryXAxis = {
   valueType: "DateTime",
   labelFormat: "y",
@@ -461,6 +469,8 @@ export const customersGrid = [
     isPrimaryKey: true,
   },
 ];
+
+
 
 export const employeesGrid = [
   {
@@ -939,6 +949,143 @@ export const ordersGrid = [
     textAlign: "Center",
   },
 ];
+
+
+// this is actual one 
+
+export const contactUsGrid = [
+  {
+    field: "fullname",
+    headerText: "Full Name",
+    width: "100",
+    textAlign: "Center",
+  },
+  {
+    field: "company",
+    headerText: "Company",
+    width: "100",
+    textAlign: "Center",
+  },
+  {
+    field: "email",
+    headerText: "Email",
+    width: "100",
+    textAlign: "Center",
+  },
+  {
+    field: "phone",
+    headerText: "Phone",
+    width: "120",
+    textAlign: "Center",
+  },
+  {
+    field: "status",
+    headerText: "Status",
+    width: "120",
+    textAlign: "Center",
+  },
+  {
+    field: "queryOptions",
+    headerText: "Query Options",
+    width: "150",
+    textAlign: "Center",
+  },
+  {
+    field: "message",
+    headerText: "Message",
+    width: "250",
+    textAlign: "Center",
+  },
+  {
+    field: "createdAt",
+    headerText: "Date Submitted",
+    width: "150",
+    textAlign: "Center",
+    format: "dd/MM/yyyy", // Adjust the format as needed
+    type: 'date' // Specify the type as date to ensure formatting works
+  },
+];
+
+
+// Define custom templates if needed
+const userGridImage = (data) => {
+  return `<img src="${data.imageUrl || 'default-avatar.png'}" alt="${data.fullname}" class="w-8 h-8 rounded-full" />`;
+};
+
+const userGridRole = (data) => {
+  return `<span class="px-2 py-1 text-white bg-blue-500 rounded">${data.role}</span>`;
+};
+
+
+// all users grid actual 
+
+export const allUsersGrid = [
+  { type: "checkbox", width: "50" },
+  {
+    field: "_id",
+    headerText: "User ID",
+    width: "120",
+    textAlign: "Center",
+    isPrimaryKey: true,
+  },
+  {
+    field: "fullname",
+    headerText: "Full Name",
+    width: "150",
+    textAlign: "Center",
+  },
+  {
+    field: "email",
+    headerText: "Email",
+    width: "200",
+    textAlign: "Center",
+  },
+  {
+    field: "isVerified",
+    headerText: "Verified Status",
+    width: "100",
+    textAlign: "Center",
+    // editType: "dropdownedit", // Dropdown editor for the isVerified field
+  },
+  {
+    field: "phone",
+    headerText: "Phone",
+    width: "100",
+    textAlign: "Center",
+  },
+  {
+    field: "company",
+    headerText: "Company",
+    width: "150",
+    textAlign: "Center",
+  },
+  {
+    field: "role",
+    headerText: "Role",
+    width: "100",
+    textAlign: "Center", 
+  },
+  {
+    field: "credits",
+    headerText: "Credits",
+    width: "100",
+    format: "C2", // Currency format for credits
+    textAlign: "Center",
+  },
+  {
+    field: "createdAt",
+    headerText: "Date Submitted",
+    width: "150",
+    textAlign: "Center",
+    format: "dd/MM/yyyy", // Date format for createdAt field
+    type: 'date' // Ensures correct handling of date values
+  },
+];
+
+
+
+
+
 
 export const customersData = [
   {
@@ -1460,6 +1607,8 @@ export const customersData = [
     Location: "USA",
   },
 ];
+
+
 
 export const employeesData = [
   {
@@ -2030,6 +2179,12 @@ export const employeesData = [
     EmployeeImage: avatar2,
   },
 ];
+
+
+
+
+// this have to replace 
+
 
 export const ordersData = [
   {
@@ -2714,6 +2869,9 @@ export const ordersData = [
   },
 ];
 
+
+
+
 export const scheduleData = [
   {
     Id: 1,
@@ -2939,6 +3097,7 @@ export const lineChartData = [
     { x: new Date(2011, 0, 1), y: 100 },
   ],
 ];
+
 export const dropdownData = [
   {
     Id: "1",
