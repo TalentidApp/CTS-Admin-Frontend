@@ -47,16 +47,18 @@ const LoginPage = () => {
 
       if(response?.data?.role != "Admin" ){
 
-        console.warn("role is not admin ");
+        toast.error("role is not admin ");
 
-        return ;
+
+        setUserData({email:"",password:""});
         
+        return ;
 
       }else{
 
-        console.log("helow")
+        console.log("helow");
 
-        dispatch(setData(response.data))
+        dispatch(setData(response.data));
 
         userData.email = "";
 
