@@ -43,7 +43,21 @@ const Customers = () => {
     try {
       console.log("selectedData in delete", selectedData);
       // Your API call to delete users goes here.
-      fetchAllUsersData();
+      
+
+      const response = await axios.post(`/api/user/deleteUserAccount`,{
+
+        userId:selectedData._id,
+        adminUserId:userData._id
+
+      })
+
+      console.log("res ka data ",response.data);
+
+      toast.success("user deleted successfully");
+      // Update the grid data after deletion
+      setAllUsersData(allUsersData.filter((user) => user._id!== selectedData._id));
+
     } catch (error) {
       console.error('Error deleting users:', error.message);
     }
@@ -102,6 +116,8 @@ const Customers = () => {
     } catch (error) {
 
       toast.error("Error updating user data. Please try again.");
+
+      toast.error(error?.response?.data?.message);
       console.error('Error updating user:', error.message);
     }
     finally{
@@ -117,8 +133,9 @@ const Customers = () => {
       userUpdateHandler(args.data, args.previousData); // Call update handler
     } else if (args.requestType === 'delete') {
 
+      console.log("args ka data in delete ",args.promise[0]);
       console.log("call the update handler")
-      userDeleteHandler(args.data); // Call delete handler
+      userDeleteHandler(args.promise[0]); // Call delete handler
     }
   };
 
