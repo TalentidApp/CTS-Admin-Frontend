@@ -28,7 +28,7 @@ const Orders = () => {
       try {
 
         setLoading(true);
-        const response = await axios.get(`${apiUrl}/api/users/getAllContactUsForm`);
+        const response = await axios.get(`${apiUrl}/api/contactus/getAllContactUsForm`);
         setAllFormData(response.data.data);
 
         toast.success("all contact us form data fetch successfully ");
@@ -60,19 +60,22 @@ const Orders = () => {
       console.log("Updated contact form data: ", updatedData);
 
       try {
-        const resposne = await axios.post(`${apiUrl}/api/users/updateContactUsStatus`, {
+        const resposne = await axios.post(`${apiUrl}/api/contactus/updateContactUsStatus`, {
           updatedStatus: updatedData.status,
           contactUsId: updatedData._id
         });
 
         console.log("res ka data: " + resposne.data);
 
-        
-        console.log("Data updated successfully");
+        toast.success("status updated successfully ");
+      
         
       } catch (error) {
 
         console.error("Error updating data: ", error);
+
+        toast.error(error?.response?.data?.message);
+        
       }
     }
   };
